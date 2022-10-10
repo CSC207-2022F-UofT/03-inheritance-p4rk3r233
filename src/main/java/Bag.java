@@ -84,11 +84,9 @@ public abstract class Bag {
     public void addItem(String item) {
         if (this.numberOfContents + 1 < this.capacity) {
             this.numberOfContents += 1;
-            this.contents.add(-1, item);
+            this.contents.add(item);
         }
     }
-
-
 
 
     /**
@@ -106,8 +104,10 @@ public abstract class Bag {
         if (this.contents.size() < 1) {
             return null;
         } else {
-            String removed = this.contents.get(-1);
-            this.contents.remove(-1);
+            int index = this.contents.size() - 1;
+            String removed = this.contents.get(index);
+            this.contents.remove(index);
+            this.numberOfContents -= 1;
             return removed;
         }
     }
